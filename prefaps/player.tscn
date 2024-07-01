@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://chqq4hktlqsck"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_c7qx7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aqe73"]
+
+[node name="Player" type="CharacterBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("BoxMesh_c7qx7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.2, 0.000254781, 0.0002275, -0.000253728, 0.199998, -0.000923346, -0.000228674, 0.000923056, 0.199998, 0, 0, 0)
+shape = SubResource("BoxShape3D_aqe73")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000633001, 0)
+light_size = 1.0
+omni_range = 2.17137

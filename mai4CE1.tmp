@@ -1,0 +1,31 @@
+[gd_scene load_steps=11 format=3 uid="uid://c1wld8craqteo"]
+
+[ext_resource type="Script" path="res://Level.gd" id="1_bdccx"]
+[ext_resource type="Script" path="res://Map.gd" id="1_fa3dw"]
+[ext_resource type="PackedScene" uid="uid://em01o47ssay6" path="res://modules/module_1.tscn" id="2_vima4"]
+[ext_resource type="PackedScene" uid="uid://gys1ks0sb3vj" path="res://modules/module_2.tscn" id="3_utn23"]
+[ext_resource type="PackedScene" uid="uid://bfp0lg5tf1fsd" path="res://modules/module_3.tscn" id="4_7hdhq"]
+[ext_resource type="PackedScene" uid="uid://2g1pkftai10v" path="res://modules/module_4.tscn" id="5_nk2iv"]
+[ext_resource type="PackedScene" uid="uid://pg5kif2j7o4a" path="res://modules/module_5.tscn" id="6_rj76p"]
+[ext_resource type="PackedScene" uid="uid://dwrllb7lwoocg" path="res://modules/module_6.tscn" id="7_clctm"]
+[ext_resource type="PackedScene" uid="uid://bp5hgk4ummaet" path="res://modules/module_7.tscn" id="8_pfnlo"]
+
+[sub_resource type="Environment" id="Environment_et1ne"]
+
+[node name="main" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.4363, 30.985, 0)
+
+[node name="Map" type="Node3D" parent="."]
+script = ExtResource("1_fa3dw")
+
+[node name="Level" type="Node3D" parent="Map"]
+script = ExtResource("1_bdccx")
+modules = Array[PackedScene]([ExtResource("2_vima4"), ExtResource("3_utn23"), ExtResource("4_7hdhq"), ExtResource("5_nk2iv"), ExtResource("6_rj76p"), ExtResource("7_clctm"), ExtResource("8_pfnlo")])
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Map"]
+environment = SubResource("Environment_et1ne")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, -0.232546, 0.972585, 0, -0.972585, -0.232546, 0, 30.2464, -29.6566)

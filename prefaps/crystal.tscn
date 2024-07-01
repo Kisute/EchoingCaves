@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://crumc3822guef"]
+
+[ext_resource type="Material" uid="uid://b5jvixupvpk2r" path="res://Assets/Materials/crystalMaterial.tres" id="1_1o47v"]
+[ext_resource type="ArrayMesh" uid="uid://bq0a46uyvtmve" path="res://Assets/Models/crystal.obj" id="2_hweb8"]
+
+[node name="crystal" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_1o47v")
+mesh = ExtResource("2_hweb8")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0270176, 0.577864, 1.60246)
+light_color = Color(5.96821e-06, 0.923179, 0.923979, 1)
+shadow_enabled = true

@@ -14,6 +14,6 @@ config/name="EchoingCaves"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
-[rendering]
+[autoload]
 
-renderer/rendering_method="mobile"
+BgSounds="*res://bg_sounds.tscn"
