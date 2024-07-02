@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://diqfp0eiyykow"]
+
+[ext_resource type="AudioStream" uid="uid://bvav3fenvxrv8" path="res://Assets/Sounds/BGSoundWaterDroplets.wav" id="1_p5372"]
+[ext_resource type="AudioStream" uid="uid://mp3dejucols2" path="res://Assets/Sounds/BGSoundCaveSounds.wav" id="2_4eh41"]
+[ext_resource type="Script" path="res://Assets/scripts/RandomSoundGenerator.gd" id="3_rkolt"]
+[ext_resource type="AudioStream" uid="uid://dypbioavhi8d7" path="res://Assets/Sounds/RandomSoundEffectBigBlob.wav" id="4_fn6gf"]
+[ext_resource type="AudioStream" uid="uid://dyx3nwt6st6ru" path="res://Assets/Sounds/RandomSoundEffectSymphoidCaveTaps.wav" id="5_3nyk6"]
+
+[node name="Node" type="Node"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_p5372")
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4eh41")
+volume_db = -25.297
+autoplay = true
+
+[node name="Node" type="Node" parent="." node_paths=PackedStringArray("sounds")]
+script = ExtResource("3_rkolt")
+sounds = [NodePath("AudioStreamPlayer"), NodePath("AudioStreamPlayer2")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("4_fn6gf")
+volume_db = -29.978
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("5_3nyk6")

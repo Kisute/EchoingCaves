@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://c1wld8craqteo"]
+[gd_scene load_steps=15 format=3 uid="uid://c1wld8craqteo"]
 
-[ext_resource type="Script" path="res://Level.gd" id="1_bdccx"]
-[ext_resource type="Script" path="res://Map.gd" id="1_fa3dw"]
+[ext_resource type="Script" path="res://Assets/scripts/Level.gd" id="1_bdccx"]
+[ext_resource type="Script" path="res://Assets/scripts/Map.gd" id="1_fa3dw"]
 [ext_resource type="PackedScene" uid="uid://em01o47ssay6" path="res://modules/module_1.tscn" id="2_vima4"]
 [ext_resource type="PackedScene" uid="uid://gys1ks0sb3vj" path="res://modules/module_2.tscn" id="3_utn23"]
 [ext_resource type="PackedScene" uid="uid://bfp0lg5tf1fsd" path="res://modules/module_3.tscn" id="4_7hdhq"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bp5hgk4ummaet" path="res://modules/module_7.tscn" id="8_pfnlo"]
 [ext_resource type="PackedScene" uid="uid://chqq4hktlqsck" path="res://prefaps/player.tscn" id="10_pkfv2"]
 [ext_resource type="Texture2D" uid="uid://boish4rq7ekc8" path="res://Assets/sprites/usvaa.png" id="11_mplgu"]
+[ext_resource type="PackedScene" uid="uid://crumc3822guef" path="res://prefaps/crystal.tscn" id="12_6n21x"]
 
 [sub_resource type="Sky" id="Sky_h0tjy"]
 
@@ -18,23 +19,33 @@
 background_mode = 2
 sky = SubResource("Sky_h0tjy")
 ssao_enabled = true
+glow_enabled = true
+glow_intensity = 3.65
+glow_strength = 2.0
+glow_bloom = 0.01
+glow_blend_mode = 1
+glow_hdr_threshold = 1.18
 fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
-fog_light_energy = 2.51
-fog_density = 0.1469
-fog_aerial_perspective = 0.232
+fog_light_energy = 11.75
+fog_density = 0.2312
+fog_aerial_perspective = 1.0
 
 [node name="main" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.33709e-08, 0.418755, -0.908099, 5.44517e-09, 0.908099, 0.418755, 1, 1.3217e-08, -4.16653e-08, 0.254472, 1.39365, 0.00392378)
+transform = Transform3D(-4.3478e-08, 0.202394, -0.979304, -4.51067e-09, 0.979304, 0.202394, 1, 1.3217e-08, -4.16653e-08, 0.254472, 1.91515, 0.00392378)
 
 [node name="Map" type="Node3D" parent="."]
 script = ExtResource("1_fa3dw")
 
-[node name="Level" type="Node3D" parent="Map"]
+[node name="Level" type="Node3D" parent="Map" node_paths=PackedStringArray("player")]
 script = ExtResource("1_bdccx")
 modules = Array[PackedScene]([ExtResource("2_vima4"), ExtResource("3_utn23"), ExtResource("4_7hdhq"), ExtResource("5_nk2iv"), ExtResource("6_rj76p"), ExtResource("7_clctm"), ExtResource("8_pfnlo")])
+player = NodePath("Player")
+
+[node name="Player" parent="Map/Level" instance=ExtResource("10_pkfv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.63612, 0.917523, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map"]
 transform = Transform3D(0.58976, 0.187799, -0.785439, 0.807578, -0.137146, 0.573592, 0, -0.972585, -0.232546, -10.3577, 4.93645, -0.703453)
@@ -42,9 +53,9 @@ transform = Transform3D(0.58976, 0.187799, -0.785439, 0.807578, -0.137146, 0.573
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Map"]
 environment = SubResource("Environment_tl86b")
 
-[node name="Player" parent="." instance=ExtResource("10_pkfv2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.639156, 0.917523, 0)
-
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-4.72079e-09, 0.0276793, -0.107999, 1.2099e-09, 0.107999, 0.0276793, 0.111489, -9.59223e-17, -4.87336e-09, -4.90522, 1.07419, -0.0456943)
 texture = ExtResource("11_mplgu")
+
+[node name="crystal" parent="." instance=ExtResource("12_6n21x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.5671)

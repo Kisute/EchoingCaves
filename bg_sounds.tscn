@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://diqfp0eiyykow"]
-
-[ext_resource type="AudioStream" uid="uid://dypbioavhi8d7" path="res://Assets/Sounds/11126__jnr-hacksaw__deep-drip-hit.wav" id="1_kfh6n"]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
-stream = ExtResource("1_kfh6n")
-autoplay = true

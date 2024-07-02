@@ -1,20 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://chqq4hktlqsck"]
+[gd_scene load_steps=6 format=3 uid="uid://chqq4hktlqsck"]
+
+[ext_resource type="Script" path="res://Assets/scripts/player.gd" id="1_s3g8s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skfvm"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.02
+grow = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_c7qx7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aqe73"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6qe2v"]
+
 [node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_s3g8s")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+transform = Transform3D(0.29, 0, 0, 0, 0.777, 0, 0, 0, 0.29, -0.00636959, 0.321638, 0.00181377)
+material_override = SubResource("StandardMaterial3D_skfvm")
 mesh = SubResource("BoxMesh_c7qx7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.2, 0.000254781, 0.0002275, -0.000253728, 0.199998, -0.000923346, -0.000228674, 0.000923056, 0.199998, 0, 0, 0)
+transform = Transform3D(0.0899999, 0.000114651, 0.000102375, -0.000114177, 0.089999, -0.000415505, -0.000102903, 0.000415375, 0.089999, 0.389598, 0.16406, 0)
 shape = SubResource("BoxShape3D_aqe73")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000633001, 0)
+visible = false
 light_size = 1.0
 omni_range = 2.17137
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 0, 0.201439, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.32887, 4.65672, 0)
+shape = SubResource("CapsuleShape3D_6qe2v")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

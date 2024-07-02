@@ -1,15 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://em01o47ssay6"]
+[gd_scene load_steps=11 format=3 uid="uid://em01o47ssay6"]
 
 [ext_resource type="Script" path="res://modules/module.gd" id="1_kgxut"]
 [ext_resource type="ArrayMesh" uid="uid://ku4a4nmw7nt" path="res://Assets/Models/model1detailed.obj" id="2_b07vb"]
 [ext_resource type="Material" uid="uid://c8p068m26amhu" path="res://Assets/Materials/wallMaterialDarkBlue.tres" id="3_1ucfg"]
 [ext_resource type="PackedScene" uid="uid://cvkl0gylllo5y" path="res://prefaps/floor.tscn" id="3_67tfc"]
 [ext_resource type="PackedScene" uid="uid://crumc3822guef" path="res://prefaps/crystal.tscn" id="5_umvj0"]
+[ext_resource type="ArrayMesh" uid="uid://sekbj0svbatv" path="res://Assets/Models/model1.obj" id="5_ya4xe"]
 [ext_resource type="PackedScene" uid="uid://csh1qlyffd4gv" path="res://prefaps/rock2.tscn" id="6_y12da"]
 [ext_resource type="PackedScene" uid="uid://pyhbq3akii4t" path="res://prefaps/rock.tscn" id="7_eij6t"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_q2gte"]
 data = PackedVector3Array(-10, 3.9999, 2.9998, -10, 0, 2.9998, -10, 3.9999, 2, -10, 3.9999, 2, -10, 0, 2.9998, -10, 0, 2, -10, 3.9999, 2, -10, 0, 2, 10, 3.9999, 2, 10, 3.9999, 2, -10, 0, 2, 10, 0, 2, 10, 3.9999, 2, 10, 0, 2, 10, 3.9999, 2.9998, 10, 3.9999, 2.9998, 10, 0, 2, 10, 0, 2.9998, 10, 3.9999, 2.9998, 10, 0, 2.9998, -10, 3.9999, 2.9998, -10, 3.9999, 2.9998, 10, 0, 2.9998, -10, 0, 2.9998, 10, 0, 2, -10, 0, 2, 10, 0, 2.9998, 10, 0, 2.9998, -10, 0, 2, -10, 0, 2.9998, -10, 3.9999, 2, 10, 3.9999, 2, -10, 3.9999, 2.9998, -10, 3.9999, 2.9998, 10, 3.9999, 2, 10, 3.9999, 2.9998, -10, 0.5, -10, 10, 0.5, -10, -10, 0.5, 10, -10, 0.5, 10, 10, 0.5, -10, 10, 0.5, 10, 10, 0.5, 10, 10, -0.5, 10, -10, 0.5, 10, -10, 0.5, 10, 10, -0.5, 10, -10, -0.5, 10, -10, 0.5, 10, -10, -0.5, 10, -10, 0.5, -10, -10, 0.5, -10, -10, -0.5, 10, -10, -0.5, -10, 10, -0.5, -10, -10, -0.5, -10, 10, -0.5, 10, 10, -0.5, 10, -10, -0.5, -10, -10, -0.5, 10, 10, 0.5, -10, 10, -0.5, -10, 10, 0.5, 10, 10, 0.5, 10, 10, -0.5, -10, 10, -0.5, 10, -10, 0.5, -10, -10, -0.5, -10, 10, 0.5, -10, 10, 0.5, -10, -10, -0.5, -10, 10, -0.5, -10, -10, 3.9999, -2, -10, 0, -2, -10, 3.9999, -3.0001, -10, 3.9999, -3.0001, -10, 0, -2, -10, 0, -3.0001, -10, 3.9999, -3.0001, -10, 0, -3.0001, 10, 3.9999, -3.0001, 10, 3.9999, -3.0001, -10, 0, -3.0001, 10, 0, -3.0001, 10, 3.9999, -3.0001, 10, 0, -3.0001, 10, 3.9999, -2, 10, 3.9999, -2, 10, 0, -3.0001, 10, 0, -2, 10, 3.9999, -2, 10, 0, -2, -10, 3.9999, -2, -10, 3.9999, -2, 10, 0, -2, -10, 0, -2, 10, 0, -3.0001, -10, 0, -3.0001, 10, 0, -2, 10, 0, -2, -10, 0, -3.0001, -10, 0, -2, -10, 3.9999, -3.0001, 10, 3.9999, -3.0001, -10, 3.9999, -2, -10, 3.9999, -2, 10, 3.9999, -3.0001, 10, 3.9999, -2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yblub"]
 
 [node name="module1" type="Node3D"]
 transform = Transform3D(1.5, 0, -1.59872e-14, 0, 1.5, 0, 1.59872e-14, 0, 1.5, 0, 0, 0)
@@ -21,34 +24,44 @@ script = ExtResource("1_kgxut")
 material_override = ExtResource("3_1ucfg")
 mesh = ExtResource("2_b07vb")
 
+[node name="floor" parent="StaticBody3D" instance=ExtResource("3_67tfc")]
+
+[node name="Area3D" type="Area3D" parent="StaticBody3D"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D/Area3D"]
+shape = SubResource("ConcavePolygonShape3D_q2gte")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/Area3D"]
+visible = false
+material_override = SubResource("StandardMaterial3D_yblub")
+mesh = ExtResource("5_ya4xe")
+
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_q2gte")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D"]
-skeleton = NodePath("../MeshInstance3D")
+[node name="decoration" type="Node3D" parent="StaticBody3D"]
+transform = Transform3D(0.666667, 0, 7.10542e-15, 0, 0.666667, 0, -7.10542e-15, 0, 0.666667, 0, 0, 0)
 
-[node name="floor" parent="StaticBody3D/MeshInstance3D2" instance=ExtResource("3_67tfc")]
+[node name="crystal" parent="StaticBody3D/decoration" instance=ExtResource("5_umvj0")]
+transform = Transform3D(1.5, 0, -1.59872e-14, 0, 1.5, 0, 1.59872e-14, 0, 1.5, 14.3517, 0.251828, 0.340742)
 
-[node name="crystal" parent="." instance=ExtResource("5_umvj0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.56783, 0.167885, 0.227161)
+[node name="crystal2" parent="StaticBody3D/decoration" instance=ExtResource("5_umvj0")]
+transform = Transform3D(-0.550775, 0, -1.39522, 0, 1.5, 0, 1.39522, 0, -0.550775, 9.79675, 0.0261816, -1.48461)
 
-[node name="crystal2" parent="." instance=ExtResource("5_umvj0")]
-transform = Transform3D(-0.367183, 0, -0.930149, 0, 1, 0, 0.930149, 0, -0.367183, 6.53117, 0.0174544, -0.989743)
+[node name="crystal3" parent="StaticBody3D/decoration" instance=ExtResource("5_umvj0")]
+transform = Transform3D(1.5, 0, -1.59872e-14, 0, 1.5, 0, 1.59872e-14, 0, 1.5, -0.170622, -0.11955, 0.037834)
 
-[node name="crystal3" parent="." instance=ExtResource("5_umvj0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113748, -0.0797001, 0.0252227)
+[node name="crystal4" parent="StaticBody3D/decoration" instance=ExtResource("5_umvj0")]
+transform = Transform3D(-0.550775, 0, -1.39522, 0, 1.5, 0, 1.39522, 0, -0.550775, -9.34639, 0.0261816, -1.70067)
 
-[node name="crystal4" parent="." instance=ExtResource("5_umvj0")]
-transform = Transform3D(-0.367183, 0, -0.930149, 0, 1, 0, 0.930149, 0, -0.367183, -6.23093, 0.0174544, -1.13378)
+[node name="rock" parent="StaticBody3D/decoration" instance=ExtResource("6_y12da")]
+transform = Transform3D(0.105105, 0, -1.49631, 0, 1.5, 0, 1.49631, 0, 0.105105, -9.35085, -0.0650097, -2.18684)
 
-[node name="rock" parent="." instance=ExtResource("6_y12da")]
-transform = Transform3D(0.0700699, 0, -0.997542, 0, 1, 0, 0.997542, 0, 0.0700699, -6.2339, -0.0433398, -1.45789)
+[node name="rock2" parent="StaticBody3D/decoration" instance=ExtResource("6_y12da")]
+transform = Transform3D(0.105105, 0, -1.49631, 0, 1.5, 0, 1.49631, 0, 0.105105, 1.71961, -0.0650097, 2.89653)
 
-[node name="rock2" parent="." instance=ExtResource("6_y12da")]
-transform = Transform3D(0.0700699, 0, -0.997542, 0, 1, 0, 0.997542, 0, 0.0700699, 1.14641, -0.0433398, 1.93102)
+[node name="rock3" parent="StaticBody3D/decoration" instance=ExtResource("7_eij6t")]
+transform = Transform3D(0.258101, 0, -1.47763, 0, 1.5, 0, 1.47763, 0, 0.258101, 4.90765, -0.00584489, -1.88149)
 
-[node name="rock3" parent="." instance=ExtResource("7_eij6t")]
-transform = Transform3D(0.172067, 0, -0.985085, 0, 1, 0, 0.985085, 0, 0.172067, 3.27177, -0.00389659, -1.25433)
-
-[node name="rock3" parent="rock3" instance=ExtResource("7_eij6t")]
-transform = Transform3D(1.49189, 0, 0.155751, 0, 1.5, 0, -0.155751, 0, 1.49189, 3.93058, 0.0722239, -4.48571)
+[node name="rock3" parent="StaticBody3D/decoration/rock3" instance=ExtResource("7_eij6t")]
+transform = Transform3D(1.49189, 0, 0.155751, 0, 1.5, 0, -0.155751, 0, 1.49189, 3.80243, 0.0722239, -3.75207)

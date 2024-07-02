@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/397960__ibm5155__echo-dungeon-5.ogg-f0f467ef9
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
