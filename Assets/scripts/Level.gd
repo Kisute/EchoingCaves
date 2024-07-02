@@ -33,15 +33,24 @@ func _set_as_active(scene):
 	active = scene
 	
 func _check_inputs():
-	if (player._is_turning_allowed()):		
-		if Input.is_action_just_pressed("ui_left"):
+		
+	if Input.is_action_just_pressed("ui_left"):
+		if (player._is_turning_allowed()):	
 			active.spin(-90)
-		if Input.is_action_just_pressed("ui_right"):
+		else:	
+			print("not implemented")
+	if Input.is_action_just_pressed("ui_right"):
+		if (player._is_turning_allowed()):	
 			active.spin(90)	
-	else:
-		print("not implemented")
+		else:	
+			print("not implemented")	
+	
+		
 		
 func _game_over():
 	gameOver = true
 	active._game_over()
+	
+func _is_game_over():
+	return gameOver
 			

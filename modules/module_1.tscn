@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://em01o47ssay6"]
 
-[ext_resource type="Script" path="res://modules/module.gd" id="1_kgxut"]
+[ext_resource type="Script" path="res://Assets/scripts/module.gd" id="1_sp11r"]
 [ext_resource type="ArrayMesh" uid="uid://ku4a4nmw7nt" path="res://Assets/Models/model1detailed.obj" id="2_b07vb"]
 [ext_resource type="Material" uid="uid://c8p068m26amhu" path="res://Assets/Materials/wallMaterialDarkBlue.tres" id="3_1ucfg"]
 [ext_resource type="PackedScene" uid="uid://cvkl0gylllo5y" path="res://prefaps/floor.tscn" id="3_67tfc"]
@@ -16,13 +16,14 @@ data = PackedVector3Array(-10, 3.9999, 2.9998, -10, 0, 2.9998, -10, 3.9999, 2, -
 
 [node name="module1" type="Node3D"]
 transform = Transform3D(1.5, 0, -1.59872e-14, 0, 1.5, 0, 1.59872e-14, 0, 1.5, 0, 0, 0)
-script = ExtResource("1_kgxut")
+script = ExtResource("1_sp11r")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-material_override = ExtResource("3_1ucfg")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000796, -0.0315043, -0.0646706)
 mesh = ExtResource("2_b07vb")
+surface_material_override/0 = ExtResource("3_1ucfg")
 
 [node name="floor" parent="StaticBody3D" instance=ExtResource("3_67tfc")]
 

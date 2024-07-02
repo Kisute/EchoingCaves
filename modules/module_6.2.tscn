@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://copwpk5o3q1w6"]
+
+[ext_resource type="PackedScene" uid="uid://dwrllb7lwoocg" path="res://modules/module_6.tscn" id="1_1cq74"]
+[ext_resource type="PackedScene" uid="uid://b20wk5xjae5kq" path="res://modules/deadzone.tscn" id="2_jmf8n"]
+
+[node name="module2" instance=ExtResource("1_1cq74")]
+
+[node name="deadzone" parent="." index="2" instance=ExtResource("2_jmf8n")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 1.9672, -9.001)

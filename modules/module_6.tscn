@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dwrllb7lwoocg"]
 
-[ext_resource type="Script" path="res://modules/module.gd" id="1_qh7ow"]
+[ext_resource type="Script" path="res://Assets/scripts/module.gd" id="1_d4f21"]
 [ext_resource type="Material" uid="uid://c8p068m26amhu" path="res://Assets/Materials/wallMaterialDarkBlue.tres" id="2_saykh"]
 [ext_resource type="ArrayMesh" uid="uid://bx5iwf31urrt0" path="res://Assets/Models/model2detailed.obj" id="3_qpb5f"]
 [ext_resource type="PackedScene" uid="uid://cvkl0gylllo5y" path="res://prefaps/floor.tscn" id="4_0ce1k"]
@@ -18,7 +18,7 @@ data = PackedVector3Array(-10, 3.9999, 2.9998, -10, 0, 2.9998, -10, 3.9999, 2, -
 
 [node name="module2" type="Node3D"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-script = ExtResource("1_qh7ow")
+script = ExtResource("1_d4f21")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)

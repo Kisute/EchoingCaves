@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://cexrqks2xdvt7"]
+
+[ext_resource type="PackedScene" uid="uid://dha5li0wojilf" path="res://Assets/Models/player/player.glb" id="1_dkxdy"]
+[ext_resource type="Material" uid="uid://d2mpvtqoakpcg" path="res://Assets/Materials/playerMaterial.tres" id="2_xhaof"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_54o6f"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_aotcs"]
+graph_offset = Vector2(0, -150)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_54o6f")
+nodes/Animation/position = Vector2(520, 40)
+nodes/output/position = Vector2(720, 160)
+node_connections = [&"output", 0, &"Animation"]
+
+[node name="player" instance=ExtResource("1_dkxdy")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(0, 4.4727, 0)
+bones/0/rotation = Quaternion(0.0211136, -0.706792, -0.0211136, 0.706792)
+bones/1/rotation = Quaternion(3.01905e-09, 3.72424e-16, 0.0690678, 0.997612)
+bones/3/rotation = Quaternion(-0.0054837, -0.00150952, 0.00709982, 0.999959)
+bones/4/rotation = Quaternion(-0.639635, -0.0351278, 0.016046, 0.767708)
+bones/5/rotation = Quaternion(-0.668303, 0.157624, -0.0483624, 0.725388)
+bones/6/rotation = Quaternion(-0.137312, -0.278003, -0.557682, 0.769968)
+bones/9/rotation = Quaternion(0.070934, -0.564208, 0.805088, 0.168736)
+bones/10/rotation = Quaternion(-0.195706, 0.112573, 0.686733, 0.690959)
+bones/13/rotation = Quaternion(0.0106669, 0.781549, 0.623655, -0.011029)
+bones/14/position = Vector3(2.25099e-07, 4.4727, -1.29282e-08)
+bones/14/rotation = Quaternion(0.41615, 0.200053, 0.71886, -0.519653)
+bones/15/rotation = Quaternion(-0.367992, -0.302876, -0.48825, 0.731068)
+bones/16/rotation = Quaternion(-0.0584528, 0.0146127, 0.310366, 0.948706)
+bones/17/rotation = Quaternion(0.145363, 0.0424393, -0.672079, 0.72483)
+bones/18/position = Vector3(-2.25099e-07, 4.4727, -1.29282e-08)
+bones/18/rotation = Quaternion(-0.548756, 0.399575, 0.630175, 0.376943)
+bones/19/rotation = Quaternion(-0.526041, 0.0215425, 0.0855781, 0.845868)
+bones/20/rotation = Quaternion(-0.167776, -0.00637679, -0.892843, 0.417903)
+bones/21/rotation = Quaternion(0.124797, -0.0570057, 0.716368, 0.6841)
+
+[node name="Cube" parent="Armature/Skeleton3D" index="0"]
+material_override = ExtResource("2_xhaof")
+
+[node name="AnimationPlayer" parent="." index="1"]
+speed_scale = 1.089
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeBlendTree_aotcs")
+anim_player = NodePath("../AnimationPlayer")

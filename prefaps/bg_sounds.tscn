@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://diqfp0eiyykow"]
+
+[ext_resource type="AudioStream" uid="uid://bvav3fenvxrv8" path="res://Assets/Sounds/BGSoundWaterDroplets.wav" id="1_t16xl"]
+[ext_resource type="AudioStream" uid="uid://mp3dejucols2" path="res://Assets/Sounds/BGSoundCaveSounds.wav" id="2_b8xad"]
+[ext_resource type="Script" path="res://Assets/scripts/RandomSoundGenerator.gd" id="3_pos76"]
+[ext_resource type="AudioStream" uid="uid://dypbioavhi8d7" path="res://Assets/Sounds/RandomSoundEffectBigBlob.wav" id="4_13nc3"]
+[ext_resource type="AudioStream" uid="uid://dyx3nwt6st6ru" path="res://Assets/Sounds/RandomSoundEffectSymphoidCaveTaps.wav" id="5_u6acr"]
+[ext_resource type="AudioStream" uid="uid://dga6xfffqy76k" path="res://Assets/Sounds/RandomSoundEffectCreepyMoment.wav" id="6_f2u7a"]
+
+[node name="Node" type="Node"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_t16xl")
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_b8xad")
+volume_db = -25.297
+autoplay = true
+
+[node name="Node" type="Node" parent="." node_paths=PackedStringArray("sounds")]
+script = ExtResource("3_pos76")
+sounds = [NodePath("AudioStreamPlayer"), NodePath("AudioStreamPlayer2"), NodePath("AudioStreamPlayer3")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("4_13nc3")
+volume_db = -29.978
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("5_u6acr")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("6_f2u7a")

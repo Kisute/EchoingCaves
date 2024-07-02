@@ -1,6 +1,7 @@
 extends Node3D
 
-@onready var level = $"../"
+@onready var modules = $"../"
+
 var speed = 6
 var rotation_speed = 90
 var target_rotation = 0  
@@ -12,14 +13,14 @@ func _ready():
 	target_rotation = rotation_degrees
 	
 func _process(delta):
-	if ! level.gameOver:
+	if ! modules._is_game_over():
 		position.x -=speed * delta
 		if position.x < -30:
-			level.spawnModule((level.amnt-1)*level.offset)
+			modules.spawnModule((modules.amnt-1)*modules.offset)
 			queue_free()
 			
 		if position.x < 10:
-			level._set_as_active(self)
+			modules._set_as_active(self)
 			
 		if rotating:
 			if !rotatingToLeft:

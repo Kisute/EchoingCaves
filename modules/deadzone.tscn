@@ -1,11 +1,55 @@
-[gd_scene load_steps=2 format=3 uid="uid://b20wk5xjae5kq"]
+[gd_scene load_steps=13 format=3 uid="uid://b20wk5xjae5kq"]
+
+[ext_resource type="Script" path="res://Assets/scripts/deadzone.gd" id="1_pw5ay"]
+[ext_resource type="AudioStream" uid="uid://d041wwk4jmjck" path="res://Assets/Sounds/ThreatSoundDeepGrowl2.wav" id="2_3mb32"]
+[ext_resource type="AudioStream" uid="uid://bj3ydyk608f6c" path="res://Assets/Sounds/ThreathSoundEarthquake.wav" id="3_e7n1g"]
+[ext_resource type="AudioStream" uid="uid://bqjbhfx1h3ybt" path="res://Assets/Sounds/ThreathSoundGhastlyGroan.wav" id="4_8ujej"]
+[ext_resource type="AudioStream" uid="uid://c7j0gm6jleiys" path="res://Assets/Sounds/ThreathSoundShortRoar2.wav" id="5_g647s"]
+[ext_resource type="AudioStream" uid="uid://dxmpdo6parbxk" path="res://Assets/Sounds/ThreatSoundDemonmonster.wav" id="6_nfcej"]
+[ext_resource type="AudioStream" uid="uid://devo4v45j3yp" path="res://Assets/Sounds/ThreatSoundLoudScream2.wav" id="7_bk11e"]
+[ext_resource type="AudioStream" uid="uid://bynjo50iusnme" path="res://Assets/Sounds/ThreatSoundMockingDemonLaugh2.wav" id="8_iyqdg"]
+[ext_resource type="AudioStream" uid="uid://c4poajtmsxj1o" path="res://Assets/Sounds/ThreatSoundmonsterScreech1.wav" id="9_m8ktw"]
+[ext_resource type="AudioStream" uid="uid://bnhkc7qt0ipsc" path="res://Assets/Sounds/ThreatSoundMonsterScreech2.wav" id="10_a0fqe"]
+[ext_resource type="AudioStream" uid="uid://dg0n2toxpkyf4" path="res://Assets/Sounds/ThreatSoundMoogsySadGhost.wav" id="11_iy8jw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yi53m"]
 
-[node name="deadzone" type="Node3D"]
+[node name="deadzone" type="Node3D" node_paths=PackedStringArray("sounds")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 1.9672, 0)
+script = ExtResource("1_pw5ay")
+sounds = [NodePath("AudioStreamPlayer3D"), NodePath("AudioStreamPlayer3D2"), NodePath("AudioStreamPlayer3D3"), NodePath("AudioStreamPlayer3D4"), NodePath("AudioStreamPlayer3D5"), NodePath("AudioStreamPlayer3D6"), NodePath("AudioStreamPlayer3D7"), NodePath("AudioStreamPlayer3D8"), NodePath("AudioStreamPlayer3D9"), NodePath("AudioStreamPlayer3D10")]
 
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_yi53m")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_3mb32")
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_e7n1g")
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_8ujej")
+
+[node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_g647s")
+
+[node name="AudioStreamPlayer3D5" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_nfcej")
+
+[node name="AudioStreamPlayer3D6" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_bk11e")
+
+[node name="AudioStreamPlayer3D7" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_iyqdg")
+
+[node name="AudioStreamPlayer3D8" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_m8ktw")
+
+[node name="AudioStreamPlayer3D9" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("10_a0fqe")
+
+[node name="AudioStreamPlayer3D10" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("11_iy8jw")

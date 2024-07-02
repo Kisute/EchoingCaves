@@ -16,4 +16,8 @@ config/features=PackedStringArray("4.2", "Mobile")
 
 [autoload]
 
-BgSounds="*res://modules/bg_sounds.tscn"
+BgSounds="*res://prefaps/bg_sounds.tscn"
+
+[filesystem]
+
+import/fbx/enabled=false
