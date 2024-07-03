@@ -4,5 +4,8 @@
 diffuse_mode = 3
 specular_mode = 1
 roughness = 0.0
+emission_enabled = true
 emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 0.01
+emission_energy_multiplier = 0.59
+grow = true
+grow_amount = 0.242

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c1wld8craqteo"]
+[gd_scene load_steps=20 format=3 uid="uid://c1wld8craqteo"]
 
 [ext_resource type="Script" path="res://Assets/scripts/Map.gd" id="1_fa3dw"]
 [ext_resource type="PackedScene" uid="uid://bbjlshs20btnc" path="res://prefaps/level.tscn" id="2_ugypu"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://ds5kl4h1yi6ma" path="res://modules/module_7.2.tscn" id="11_kj574"]
 [ext_resource type="Texture2D" uid="uid://boish4rq7ekc8" path="res://Assets/sprites/usvaa.png" id="11_mplgu"]
 [ext_resource type="PackedScene" uid="uid://crumc3822guef" path="res://prefaps/crystal.tscn" id="12_6n21x"]
+[ext_resource type="Script" path="res://Score.gd" id="14_3ey6s"]
+[ext_resource type="Texture2D" uid="uid://drhxuswky4u4a" path="res://Assets/sprites/tooth.png" id="15_a2io6"]
 
 [sub_resource type="Sky" id="Sky_h0tjy"]
 
@@ -21,6 +23,8 @@ background_mode = 2
 sky = SubResource("Sky_h0tjy")
 ssao_enabled = true
 glow_enabled = true
+glow_levels/1 = 0.3
+glow_levels/2 = 0.3
 glow_intensity = 4.23
 glow_strength = 0.79
 glow_bloom = 0.01
@@ -29,19 +33,26 @@ glow_hdr_threshold = 1.18
 fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
 fog_light_energy = 11.75
-fog_density = 0.2312
+fog_density = 0.3315
 fog_aerial_perspective = 1.0
+
+[sub_resource type="FontVariation" id="FontVariation_blvbo"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_bkagf"]
+lightmap_size_hint = Vector2i(290, 0)
 
 [node name="main" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.3478e-08, 0.202394, -0.979304, -4.51067e-09, 0.979304, 0.202394, 1, 1.3217e-08, -4.16653e-08, 0.254472, 2.69541, 0.00392378)
+transform = Transform3D(-4.3164e-08, 0.44896, -0.893552, 6.89596e-09, 0.893552, 0.44896, 1, 1.3217e-08, -4.16653e-08, -0.585692, 2.69541, 0.00392378)
 
 [node name="Map" type="Node3D" parent="."]
 script = ExtResource("1_fa3dw")
 
-[node name="Level" parent="Map" instance=ExtResource("2_ugypu")]
+[node name="Level" parent="Map" node_paths=PackedStringArray("score", "blackScreen") instance=ExtResource("2_ugypu")]
 modules = Array[PackedScene]([ExtResource("2_vima4"), ExtResource("10_7gyal"), ExtResource("5_8esl0"), ExtResource("4_7hdhq"), ExtResource("6_rj76p"), ExtResource("4_7hdhq"), ExtResource("6_rj76p"), ExtResource("8_g8vtw"), ExtResource("9_4jgim"), ExtResource("10_3q1bd"), ExtResource("11_kj574")])
+score = NodePath("../../CanvasLayer2/Label")
+blackScreen = NodePath("../../CanvasLayer/MeshInstance2D")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map"]
 transform = Transform3D(0.58976, 0.187799, -0.785439, 0.807578, -0.137146, 0.573592, 0, -0.972585, -0.232546, -10.3577, 4.93645, -0.703453)
@@ -55,3 +66,20 @@ texture = ExtResource("11_mplgu")
 
 [node name="crystal" parent="." instance=ExtResource("12_6n21x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.5671)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer2"]
+offset_right = 488.0
+offset_bottom = 196.0
+theme_override_fonts/font = SubResource("FontVariation_blvbo")
+theme_override_font_sizes/font_size = 70
+script = ExtResource("14_3ey6s")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer"]
+position = Vector2(579, 822)
+scale = Vector2(1816.96, 1773.78)
+mesh = SubResource("QuadMesh_bkagf")
+texture = ExtResource("15_a2io6")

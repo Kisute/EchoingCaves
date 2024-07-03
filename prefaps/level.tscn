@@ -17,4 +17,4 @@ modules = Array[PackedScene]([ExtResource("2_8mhvg"), ExtResource("3_iqbuf"), Ex
 player = NodePath("Player")
 
 [node name="Player" parent="." instance=ExtResource("10_fmept")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76012, 0.917523, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.581863, 0.917523, 0)

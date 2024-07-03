@@ -43,6 +43,8 @@ func _process(delta):
 			  
 
 func spin(degrees):
+	if rotating:
+		return
 	target_rotation = current_rotation + degrees
 	rotating = true
 	if degrees<0: 

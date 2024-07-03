@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://cvkl0gylllo5y"]
 
 [ext_resource type="ArrayMesh" uid="uid://qtne4bvsdcrs" path="res://Assets/Models/floor.obj" id="1_frrcv"]
-[ext_resource type="Material" uid="uid://c8p068m26amhu" path="res://Assets/Materials/wallMaterialDarkBlue.tres" id="1_mxflk"]
+[ext_resource type="Material" uid="uid://bw1s2q1b3gtik" path="res://Assets/Materials/floorMaterial.tres" id="1_olsmk"]
 
 [node name="floor" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = ExtResource("1_mxflk")
+material_override = ExtResource("1_olsmk")
 mesh = ExtResource("1_frrcv")
